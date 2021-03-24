@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class LoggingService {
 
     logToConsole(value:any){

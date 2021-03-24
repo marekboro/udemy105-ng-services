@@ -13,14 +13,18 @@ export class NewAccountComponent {
   // @Output() accountAdded = new EventEmitter<{name: string, status: string}>();
 
   constructor(//private loggingService: LoggingService, //!GOOD practice
-              private accountService: AccountService ){ 
+    private accountService: AccountService) {
+      this.accountService.statusUpdated.subscribe(
+        (status:string) => alert('New status: ' + status)
+      )
+
 
   }
 
   onCreateAccount(accountName: string, accountStatus: string) {
-    this.accountService.addAccount(accountName,accountStatus)
-    
-    
+    this.accountService.addAccount(accountName, accountStatus)
+
+
     // - - -
     // this.accountAdded.emit({
     //   name: accountName,
@@ -31,6 +35,6 @@ export class NewAccountComponent {
     // const service = new LoggingService();  //! BAD practice!
     // service.logStatusChange(accountStatus) //! BAD practice!
     // this.loggingService.logStatusChange(accountStatus);
-    
+
   }
 }
